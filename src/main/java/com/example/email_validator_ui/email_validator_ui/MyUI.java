@@ -27,11 +27,14 @@ public class MyUI extends UI {
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
         
+        //textfield for typing in email address
         final TextField email = new TextField();
         email.setCaption("Type your email address here:");
         Validator check = new Validator();
 
+        //click submit when done entering email
         Button button = new Button("Submit");
+        //within the addClickListener method is an if/else which calls the validate method in Validator.java
         button.addClickListener(e -> {
         	if (check.validate(email.getValue()))
         		layout.addComponent(new Label("This is a valid email address."));
@@ -39,6 +42,7 @@ public class MyUI extends UI {
         		layout.addComponent(new Label("Sorry! This is not a valid email address."));
         });
         
+        //add textfield and button
         layout.addComponents(email, button);
         layout.setMargin(true);
         layout.setSpacing(true);
