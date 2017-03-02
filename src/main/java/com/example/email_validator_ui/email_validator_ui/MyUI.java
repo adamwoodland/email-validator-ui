@@ -36,10 +36,11 @@ public class MyUI extends UI {
         Button button = new Button("Submit");
         //within the addClickListener method is an if/else which calls the validate method in Validator.java
         button.addClickListener(e -> {
-        	if (check.validate(email.getValue()))
+        	int x = check.validate(email.getValue());
+        	if (x == 4)
         		layout.addComponent(new Label("This is a valid email address."));
         	else
-        		layout.addComponent(new Label("Sorry! This is not a valid email address."));
+        		layout.addComponent(new Label("Sorry! This email address only follows " + x + " rule(s)."));
         });
         
         //add textfield and button
